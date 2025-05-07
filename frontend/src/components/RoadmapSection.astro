@@ -1,0 +1,103 @@
+---
+import { onMount } from 'solid-js';
+---
+
+<style>
+  .roadmap {
+    background-color: #0f172a; /* Deep Navy */
+    padding: 4rem 1rem;
+    color: #22d3ee; /* Cyan Electric */
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .roadmap h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 3px solid #22d3ee;
+  }
+  .checkpoint {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+  }
+  .checkpoint:last-child {
+    margin-bottom: 0;
+  }
+  .checkpoint::before {
+    content: '';
+    position: absolute;
+    left: -11px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: #0f172a;
+    border: 3px solid #22d3ee;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #22d3eeaa;
+  }
+  .checkpoint h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .checkpoint p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .status {
+    font-weight: 700;
+    color: #06b6d4;
+  }
+</style>
+
+<section class="roadmap" id="roadmap">
+  <h2>Roadmap to Flop's Future</h2>
+  <div class="timeline" role="list">
+    <div class="checkpoint" role="listitem" tabindex="0" aria-label="Phase 1: MVP Launch">
+      <h3>Phase 1: MVP Launch</h3>
+      <p>Basic portfolio management and transaction tracking.</p>
+      <p class="status">Completed</p>
+    </div>
+    <div class="checkpoint" role="listitem" tabindex="0" aria-label="Phase 2: Real-time Prices & Alerts">
+      <h3>Phase 2: Real-time Prices & Alerts</h3>
+      <p>Integration with CoinGecko API and email alert notifications.</p>
+      <p class="status">In Progress</p>
+    </div>
+    <div class="checkpoint" role="listitem" tabindex="0" aria-label="Phase 3: Advanced Analytics">
+      <h3>Phase 3: Advanced Analytics</h3>
+      <p>Profit/loss calculations and portfolio insights.</p>
+      <p class="status">Upcoming</p>
+    </div>
+    <div class="checkpoint" role="listitem" tabindex="0" aria-label="Phase 4: Ecosystem Expansion">
+      <h3>Phase 4: Ecosystem Expansion</h3>
+      <p>Community features and integrations.</p>
+      <p class="status">Upcoming</p>
+    </div>
+  </div>
+</section>
+
+<script type="module" is:inline>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  onMount(() => {
+    gsap.from('.checkpoint', {
+      opacity: 0,
+      x: -50,
+      stagger: 0.3,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#roadmap',
+        start: 'top 80%',
+      }
+    });
+  });
+</script>
