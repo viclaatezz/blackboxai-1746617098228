@@ -1,0 +1,87 @@
+---
+import { onMount } from 'solid-js';
+---
+
+<style>
+  .ecosystem {
+    background-color: #0f172a; /* Deep Navy */
+    padding: 4rem 1rem;
+    color: #22d3ee; /* Cyan Electric */
+    text-align: center;
+  }
+  .ecosystem h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+  }
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  .cta-button {
+    background: #22d3ee;
+    color: #0f172a;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 0 10px #22d3eeaa;
+  }
+  .cta-button:hover {
+    background: #33ffff;
+    box-shadow: 0 0 20px #33ffffcc;
+  }
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .social-icon {
+    color: #22d3ee;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  .social-icon:hover {
+    color: #33ffff;
+  }
+</style>
+
+<section class="ecosystem" id="ecosystem">
+  <h2>Join the Flop Ecosystem</h2>
+  <div class="cta-buttons">
+    <button class="cta-button" tabindex="0" aria-label="Start Using Flop">Start Using Flop</button>
+    <button class="cta-button" tabindex="0" aria-label="Explore Documentation">Explore Documentation</button>
+  </div>
+  <div class="social-icons" role="list" aria-label="Social Media Links">
+    <a href="#" class="social-icon" aria-label="Twitter" role="listitem" tabindex="0"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="social-icon" aria-label="Facebook" role="listitem" tabindex="0"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="social-icon" aria-label="LinkedIn" role="listitem" tabindex="0"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="social-icon" aria-label="GitHub" role="listitem" tabindex="0"><i class="fab fa-github"></i></a>
+  </div>
+</section>
+
+<script type="module" is:inline>
+  import gsap from 'gsap';
+
+  onMount(() => {
+    gsap.from('.cta-button', {
+      opacity: 0,
+      y: 20,
+      stagger: 0.2,
+      duration: 1,
+      ease: 'power3.out',
+    });
+
+    gsap.from('.social-icon', {
+      opacity: 0,
+      y: 20,
+      stagger: 0.1,
+      duration: 1,
+      delay: 0.5,
+      ease: 'power3.out',
+    });
+  });
+</script>
