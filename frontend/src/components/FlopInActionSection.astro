@@ -1,0 +1,95 @@
+---
+import { onMount } from 'solid-js';
+---
+
+<style>
+  .flop-in-action {
+    background-color: #0f172a; /* Deep Navy */
+    padding: 4rem 1rem;
+    color: #22d3ee; /* Cyan Electric */
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .flop-in-action h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .use-cases {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .use-case {
+    background: rgba(34, 211, 238, 0.1);
+    border: 2px solid #22d3ee;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 0 10px #22d3eeaa;
+  }
+  .use-case h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .use-case p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  /* Placeholder for slider/carousel */
+  .carousel-placeholder {
+    height: 200px;
+    background: linear-gradient(90deg, #22d3ee 0%, #0f172a 50%, #22d3ee 100%);
+    border-radius: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 1.25rem;
+    user-select: none;
+  }
+</style>
+
+<section class="flop-in-action" id="flop-in-action">
+  <h2>Flop in Action</h2>
+  <div class="use-cases">
+    <div class="use-case" tabindex="0" aria-label="Long-term portfolio management">
+      <h3>Long-term Portfolio Management</h3>
+      <p>Track your investments over years with detailed analytics and profit/loss tracking.</p>
+      <div class="carousel-placeholder">[Slider/Carousel Placeholder]</div>
+    </div>
+    <div class="use-case" tabindex="0" aria-label="Active trading portfolio">
+      <h3>Active Trading Portfolio</h3>
+      <p>Manage frequent trades and swaps with real-time price updates and alerts.</p>
+      <div class="carousel-placeholder">[Slider/Carousel Placeholder]</div>
+    </div>
+    <div class="use-case" tabindex="0" aria-label="Watchlist and alerts">
+      <h3>Watchlist and Alerts</h3>
+      <p>Keep an eye on your favorite coins and get notified instantly when targets are met.</p>
+      <div class="carousel-placeholder">[Slider/Carousel Placeholder]</div>
+    </div>
+  </div>
+</section>
+
+<script type="module" is:inline>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  onMount(() => {
+    gsap.from('.use-case', {
+      opacity: 0,
+      y: 50,
+      stagger: 0.3,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#flop-in-action',
+        start: 'top 80%',
+      }
+    });
+  });
+</script>
