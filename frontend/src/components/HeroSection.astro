@@ -1,0 +1,84 @@
+---
+import { onMount } from 'solid-js';
+---
+
+<style>
+  .hero {
+    background: radial-gradient(circle at center, #001f3f, #000814);
+    color: #00ffff;
+    text-align: center;
+    padding: 6rem 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    text-transform: lowercase;
+    filter: drop-shadow(0 0 10px #00ffff);
+  }
+  .hero .subheadline {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: #66ffff;
+  }
+  .cta-button {
+    margin-top: 2rem;
+    background: #00ffff;
+    color: #001f3f;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .cta-button:hover {
+    background: #33ffff;
+  }
+</style>
+
+<section class="hero" id="hero">
+  <h1 id="flop-title">flop</h1>
+  <p class="subheadline">Future Ledger of Portfolios - Crypto Portfolio Manager</p>
+  <button class="cta-button" id="cta-button">Get Started</button>
+</section>
+
+<script type="module" is:inline>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const title = document.getElementById('flop-title');
+  const cta = document.getElementById('cta-button');
+
+  // Typewriter effect for "flop"
+  const text = 'flop';
+  let index = 0;
+  title.textContent = '';
+  function typeWriter() {
+    if (index < text.length) {
+      title.textContent += text.charAt(index);
+      index++;
+      setTimeout(typeWriter, 150);
+    }
+  }
+  typeWriter();
+
+  // Glow pulse animation on title
+  gsap.to(title, {
+    textShadow: '0 0 20px #00ffff, 0 0 30px #00ffff',
+    repeat: -1,
+    yoyo: true,
+    duration: 2,
+    ease: 'power1.inOut'
+  });
+
+  // CTA button hover effect
+  cta.addEventListener('mouseenter', () => {
+    gsap.to(cta, { backgroundColor: '#33ffff', duration: 0.3 });
+  });
+  cta.addEventListener('mouseleave', () => {
+    gsap.to(cta, { backgroundColor: '#00ffff', duration: 0.3 });
+  });
+</script>
