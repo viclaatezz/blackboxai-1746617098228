@@ -1,0 +1,120 @@
+---
+import { onMount } from 'solid-js';
+---
+
+<style>
+  .how-it-works {
+    background-color: #0f172a; /* Deep Navy */
+    padding: 4rem 1rem;
+    color: #22d3ee; /* Cyan Electric */
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .how-it-works h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .step {
+    background: rgba(34, 211, 238, 0.1);
+    border: 2px solid #22d3ee;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 0 10px #22d3eeaa;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .step svg {
+    width: 48px;
+    height: 48px;
+    stroke: #22d3ee;
+    stroke-width: 2;
+    fill: none;
+    flex-shrink: 0;
+  }
+  .step-content {
+    flex: 1;
+  }
+  .step-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .step-content p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+</style>
+
+<section class="how-it-works" id="how-it-works">
+  <h2>How Flop Works</h2>
+  <div class="steps">
+    <div class="step" tabindex="0" aria-label="Create and manage your portfolios">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M8 12l2 2 4-4" />
+      </svg>
+      <div class="step-content">
+        <h3>Create and Manage Portfolios</h3>
+        <p>Organize your crypto assets into multiple portfolios for different strategies.</p>
+      </div>
+    </div>
+    <div class="step" tabindex="0" aria-label="Track transactions and prices">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+        <path d="M3 12h18" />
+        <path d="M12 3v18" />
+      </svg>
+      <div class="step-content">
+        <h3>Track Transactions and Prices</h3>
+        <p>Record buys, sells, and swaps with real-time price updates from CoinGecko.</p>
+      </div>
+    </div>
+    <div class="step" tabindex="0" aria-label="Analyze your portfolio performance">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 17h16M4 12h8M4 7h12" />
+      </svg>
+      <div class="step-content">
+        <h3>Analyze Portfolio Performance</h3>
+        <p>View detailed profit/loss reports and allocation charts to optimize your strategy.</p>
+      </div>
+    </div>
+    <div class="step" tabindex="0" aria-label="Set alerts and notifications">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 22a2 2 0 0 0 2-2H10a2 2 0 0 0 2 2z" />
+        <path d="M18 8a6 6 0 0 0-12 0v5H4l4 4h8l4-4h-2z" />
+      </svg>
+      <div class="step-content">
+        <h3>Set Alerts and Notifications</h3>
+        <p>Get notified instantly when your target prices are reached via email alerts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="module" is:inline>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  onMount(() => {
+    gsap.from('.step', {
+      opacity: 0,
+      y: 50,
+      stagger: 0.3,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#how-it-works',
+        start: 'top 80%',
+      }
+    });
+  });
+</script>
